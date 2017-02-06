@@ -8,14 +8,24 @@ import {
   AUTH_ERROR
 } from './types';
 
-const ROOT_URL = 'http://localhost:3010';
+const ROOT_URL = 'http://localhost:3010/api';
+
+/**
+ *  Set the state to AUTH_ERROR to indicate an error occured during an authentication call
+ */
+export const authError = error => {
+  return {
+    type: AUTH_ERROR,
+    payload: error
+  };
+}
 
 /**
  *  Authenticate and sign in a user given a username and password
  */
 export const signInUser = ({username, password}) => {
   return (dispatch) => {
-    axios.post(`${ROOT_URL}/auth/signin`, { username, password })
+    axios.post(`${ROOT_URL}/auth/login`, { username, password })
       .then(response => {
         // If the request is good update state to indicate that the user is authenticated
         dispatch({
@@ -32,7 +42,7 @@ export const signInUser = ({username, password}) => {
         browserHistory.push('/');
       })
       .catch(error => {
-        dispatch(authError(error.response.data.error));
+        dispatch(authError('Incorrect username or password.'));
       });
   };
 };
@@ -42,7 +52,7 @@ export const signInUser = ({username, password}) => {
  */
 export const signUpUser = ({username, password}) => {
   return (dispatch) => {
-    axios.post(`${ROOT_URL}/auth/signup`, {username, password})
+    axios.post(`${ROOT_URL}/auth/register`, {username, password})
       .then(response => {
         // If the request is good update state to indicate that the user is authenticated
         dispatch({
@@ -74,13 +84,3 @@ export const signOutUser = () => {
     type: UNAUTH_USER
   };
 };
-
-/**
- *  Set the state to AUTH_ERROR to indicate an error occured during an authentication call
- */
-export const authError = error => {
-  return {
-    type: AUTH_ERROR,
-    payload: error
-  };
-}
