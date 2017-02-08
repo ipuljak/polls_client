@@ -3,7 +3,8 @@ import axios from 'axios';
 
 import {
   FETCH_ERROR,
-  FETCH_POLLS
+  FETCH_POLLS,
+  FETCH_SINGLE_POLL
 } from './types';
 
 const ROOT_URL = 'http://localhost:3010/api';
@@ -28,6 +29,24 @@ export const fetchHomePolls = () => {
       .then(response => {
         dispatch({
           type: FETCH_POLLS,
+          payload: response.data
+        });
+      }).catch(error => {
+        dispatch(fetchError(error));
+      });
+  };
+};
+
+/**
+ *  Fetch a single poll to be viewed in it's own page.
+ */
+export const fetchSinglePoll = id => {
+  return dispatch => {
+    axios.get(`${ROOT_URL}/polls/${id}/read`)
+      .then(response => {
+        console.log('response', response);
+        dispatch({
+          type: FETCH_SINGLE_POLL,
           payload: response.data
         });
       }).catch(error => {

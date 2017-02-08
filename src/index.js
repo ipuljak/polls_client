@@ -15,6 +15,7 @@ import { saveState } from './middleware/localStorage';
 // Main index components
 import App from './core/app';
 import Home from './routes/home';
+import Poll from './routes/poll';
 import Secret from './routes/secret';
 
 // Create the redux store
@@ -45,6 +46,7 @@ ReactDOM.render(
       <Route path='/' component={App}>
         <IndexRoute component={Home} />
         <Route name='home' path='/home' component={Home} />
+        <Route name='poll' path='/poll/:id' component={Poll} />
         <Route name='secret' path='/secret' component={Secret} />
       </Route>
     </Router>

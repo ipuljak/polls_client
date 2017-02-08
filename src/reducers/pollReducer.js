@@ -1,6 +1,7 @@
 import {
   FETCH_ERROR,
-  FETCH_POLLS
+  FETCH_POLLS,
+  FETCH_SINGLE_POLL
 } from '../actions/types';
 
 /**
@@ -14,6 +15,9 @@ export default (state = {}, action) => {
     // Save the recently made polls in the state
     case FETCH_POLLS:
       return {...state, homePolls: action.payload};
+    // Save a single poll to be viewed in the state
+    case FETCH_SINGLE_POLL:
+      return {...state, poll: action.payload};
     default:
       return state;
   }
