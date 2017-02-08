@@ -1,3 +1,12 @@
+label {
+  display: block;
+}
+
 .nav-links {
   display: flex;
+}
+
+.pollSubmit {
+  display: block;
+  margin: 15px auto;
 }

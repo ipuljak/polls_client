@@ -3,7 +3,6 @@ import { Doughnut } from 'react-chartjs-2';
 
 const Chart = props => {
   const data = props.data;
-  console.log(data);
 
   let chartData = {
     labels: [],

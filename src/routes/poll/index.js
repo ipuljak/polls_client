@@ -11,6 +11,7 @@ class Poll extends Component {
   componentWillMount() {
     this.props.fetchSinglePoll(this.props.id);
 
+    // Set an interval here to dynamically refresh vote totals
     // setInterval(() => {
     //   this.props.fetchSinglePoll(this.props.id);
     // }, 5000)
@@ -28,7 +29,10 @@ class Poll extends Component {
         <Header as='h1'>{poll.question}</Header>
         <Header as='h3'>Created by: {poll.createdBy}</Header>
         <Chart data={poll.options} />
-        <Voting data={poll.options} />
+        <Voting 
+          data={poll.options} 
+          fetch={this.props.fetchSinglePoll}
+          pollId={this.props.id} />
       </Container>
     );
   }
