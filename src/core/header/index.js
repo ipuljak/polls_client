@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Menu, Modal } from 'semantic-ui-react';
 import { Link } from 'react-router';
+import { Menu, Modal } from 'semantic-ui-react';
 
 import * as actions from '../../actions/authActions';
 import Login from '../auth/login';

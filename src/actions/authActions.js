@@ -18,7 +18,7 @@ export const authError = error => {
     type: AUTH_ERROR,
     payload: error
   };
-}
+};
 
 /**
  *  Authenticate and sign in a user given a username and password
