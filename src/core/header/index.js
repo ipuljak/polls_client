@@ -7,9 +7,14 @@ import * as actions from '../../actions/authActions';
 import Login from '../auth/login';
 import Register from '../auth/register';
 
+/**
+ *  AppHeader class container
+ *    -> Displays the header and it's options
+ */
 class AppHeader extends Component {
   state = { activeItem: 'home' };
 
+  // Set the active header item when clicked
   handleItemClick = (e, {name}) => {
     this.setState({ activeItem: name });
   }

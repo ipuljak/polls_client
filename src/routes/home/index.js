@@ -5,14 +5,22 @@ import { Container, Header, Segment } from 'semantic-ui-react';
 
 import * as actions from '../../actions';
 
+/**
+ *  Home class container
+ *    -> Displays the home page (a list of polls)
+ */
 class Home extends Component {
+  // Fetch the polls to show on load
   componentWillMount() {
     this.props.fetchHomePolls();
   }
 
+  // Render the polls from the server
   renderPolls() {
     const { homePolls } = this.props;
+
     if (homePolls) {
+      // Create a linked segment to each of the poll's individual pages to show
       return homePolls.map(item => {
         return (
           <Link key={item.id} to={`/poll/${item.id}`}>
@@ -22,6 +30,7 @@ class Home extends Component {
           </Link>
         );
       });
+      // Show a loading icon while the polls are being fetched
     } else {
       return <Segment>Loading</Segment>;
     }
