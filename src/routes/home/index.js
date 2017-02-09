@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import { Header, Segment } from 'semantic-ui-react';
+import { Button, Divider, Header, Icon, Segment } from 'semantic-ui-react';
 
 import * as actions from '../../actions';
 
@@ -13,6 +13,22 @@ class Home extends Component {
   // Fetch the polls to show on load
   componentWillMount() {
     this.props.fetchHomePolls();
+  }
+
+  renderCreateButton() {
+    const { authenticated } = this.props;
+
+    if (authenticated) {
+      return (
+        <Link key='1' to={'/create'}>
+          <Button success>Create Poll<Icon className='header-icon' name='add' /></Button>
+        </Link>
+      );
+    } else {
+      return (
+        <p>To create a poll, please log in or register!</p>
+      );
+    }
   }
 
   // Render the polls from the server
@@ -39,8 +55,11 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <Header as='h2'>Polling Application</Header>
-        <p>Recent Polls:</p>
+        <Header as='h1'>react_Poll<Icon className='header-icon' name='checkmark box' /></Header>
+        <Header as='h3'>Create simple and dynamic polls to use and share instantly!</Header>
+        {this.renderCreateButton()}
+        <Divider />
+        <strong>Recent Polls:</strong>
         <Segment.Group>
           {this.renderPolls()}
         </Segment.Group>
@@ -51,6 +70,7 @@ class Home extends Component {
 
 const mapStateToProps = state => {
   return {
+    authenticated: state.auth.authenticated,
     homePolls: state.polls.homePolls
   };
 };

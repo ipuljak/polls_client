@@ -1,3 +1,7 @@
+.header-icon {
+  padding-left: 5px;
+}
+
 Input {
   width: 500px;
 }
@@ -9,4 +13,20 @@ Input {
 .pollSubmit {
   display: block;
   margin: 15px auto;
+}
+
+@media (max-width: 768px) {
+  Input {
+    width: 200px;
+  }
+
+  .modal-input {
+    width: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-input {
+    width: 200px;
+  }
 }

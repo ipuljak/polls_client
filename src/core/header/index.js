@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import { Menu, Modal } from 'semantic-ui-react';
+import { Icon, Menu, Modal } from 'semantic-ui-react';
 
 import * as actions from '../../actions/authActions';
 import Login from '../auth/login';
@@ -20,17 +20,34 @@ class AppHeader extends Component {
   }
 
   renderLinks() {
+    const { activeItem } = this.state;
     const { authenticated, signOutUser } = this.props;
     // If the user is authenticated, only show the sign out menu item
     if (authenticated) {
       return (
-        <Menu.Item name='Sign Out' onClick={() => signOutUser()}>Sign Out</Menu.Item>
+        <div className='nav-links'>
+          <Menu.Item 
+            as={Link} 
+            to='/create' 
+            name='Create' 
+            active={activeItem === 'Create'} 
+            onClick={this.handleItemClick}>
+            Create Poll
+            <Icon className='header-icon' name='add' />
+          </Menu.Item>
+          <Menu.Item 
+            name='Sign Out' 
+            onClick={() => signOutUser()}>
+            Sign Out
+            <Icon className='header-icon' name='sign out' />
+          </Menu.Item>
+        </div>
       );
       // Otherwise show the login and register menu items
     } else {
       return (
         <div className='nav-links'>
-          <Modal trigger={<Menu.Item name='Login'>Login</Menu.Item>}>
+          <Modal trigger={<Menu.Item name='Login'>Login<Icon className='header-icon' name='sign in' /></Menu.Item>}>
             <Modal.Header>Login</Modal.Header>
             <Modal.Content>
               <Modal.Description>
@@ -38,7 +55,7 @@ class AppHeader extends Component {
               </Modal.Description>
             </Modal.Content>
           </Modal>
-          <Modal trigger={<Menu.Item name='Register'>Register</Menu.Item>}>
+          <Modal trigger={<Menu.Item name='Register'>Register<Icon className='header-icon' name='add user' /></Menu.Item>}>
             <Modal.Header>Register</Modal.Header>
             <Modal.Content>
               <Modal.Description>
@@ -56,8 +73,15 @@ class AppHeader extends Component {
 
     return (
       <Menu inverted>
-        <Menu.Item as={Link} to='/' name='Home' active={activeItem === 'Home'} onClick={this.handleItemClick} />
-        <Menu.Item as={Link} to='/secret' name='Secret' active={activeItem === 'Secret'} onClick={this.handleItemClick} />
+        <Menu.Item 
+          as={Link} 
+          to='/' 
+          name='Home' 
+          active={activeItem === 'Home'} 
+          onClick={this.handleItemClick}>
+          react_Poll
+          <Icon className='header-icon' name='checkmark box' />
+        </Menu.Item>
         <Menu.Menu position='right'>
           {this.renderLinks()}
         </Menu.Menu>

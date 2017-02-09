@@ -10,7 +10,7 @@ const Options = ({ fields, meta: { touched, error } }) => (
       <List.Item key={index}>
         <Field
           name={`${option}.title`}
-          label={`Option #${index + 3}`}
+          label={`#${index + 3}`}
           type='text'
           component={optionField} />
 

@@ -64,21 +64,21 @@ class Create extends Component {
 
     return (
       <div>
-        <h1>Create A Poll</h1>
+        <h1>Create a Poll</h1>
         <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
           <Field name="pollName" type="text" component={titleField} label="Poll Title" />
           <List>
             <List.Item key='1'>
               <Field
                 name='default1'
-                label={`Option #1`}
+                label={`#1`}
                 type='text'
                 component={optionField} />
             </List.Item>
             <List.Item key='2'>
               <Field
                 name='default2'
-                label={`Option #2`}
+                label={`#2`}
                 type='text'
                 component={optionField} />
             </List.Item>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
+import { Button, Input, Label } from 'semantic-ui-react';
 
 import * as actions from '../../actions/authActions';
 
@@ -9,14 +10,14 @@ import * as actions from '../../actions/authActions';
  */
 const renderInput = field =>
   <div>
-    <input
+    <Input
       {...field.input}
-      className="sign-field"
+      className='modal-input'
       type={field.type}
       placeholder={field.placeholder} />
     {field.meta.touched &&
       field.meta.error &&
-      <span className="error">{field.meta.error}</span>}
+      <Label basic color='red' pointing='left'>{field.meta.error}</Label>}
   </div>
 
 /**
@@ -96,7 +97,7 @@ class Register extends Component {
         </div>
         <br />
         {this.renderAlert()}
-        <button type="submit">Submit</button>
+        <Button primary type="submit">Submit</Button>
         <br />
       </form>
     );
