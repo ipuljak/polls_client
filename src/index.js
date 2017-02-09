@@ -17,7 +17,6 @@ import App from './core/app';
 import Create from './routes/create';
 import Home from './routes/home';
 import Poll from './routes/poll';
-import Secret from './routes/secret';
 
 // Create the redux store
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
@@ -49,7 +48,6 @@ ReactDOM.render(
         <Route name='create' path='/create' component={Create} />
         <Route name='home' path='/home' component={Home} />
         <Route name='poll' path='/poll/:id' component={Poll} />
-        <Route name='secret' path='/secret' component={Secret} />
       </Route>
     </Router>
   </Provider>
