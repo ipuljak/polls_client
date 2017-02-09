@@ -30,7 +30,10 @@ class Voting extends Component {
         // If the vote is successful, refresh the chart to update the vote
         .then(response => {
           if (response.data.success) {
-            this.props.fetch(this.props.pollId);
+            // Give a small timeout to the refresh to sync with the database
+            setTimeout(() => {
+              this.props.fetch(this.props.pollId);
+            }, 150);
           }
         })
         .catch(error => {
