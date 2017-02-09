@@ -10,14 +10,10 @@ const Options = ({ fields, meta: { touched, error } }) => (
       <List.Item key={index}>
         <Field
           name={`${option}.title`}
-          label={`Option #${index + 1}`}
+          label={`Option #${index + 3}`}
           type='text'
           component={optionField} />
-          <Button 
-            basic 
-            color='red'
-            title='Remove Option'
-            onClick={() => fields.remove(index)}>X</Button>
+
       </List.Item>
     )}
     <List.Item>
