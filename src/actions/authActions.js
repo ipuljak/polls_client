@@ -36,7 +36,7 @@ export const signInUser = ({username, password}) => {
         // Save their username
         dispatch({
           type: AUTH_NAME,
-          payload: username
+          payload: response.data.UserId
         });
         // Redirect to the home route
         browserHistory.push('/');
@@ -63,7 +63,7 @@ export const signUpUser = ({username, password}) => {
         // Save their username
         dispatch({
           type: AUTH_NAME,
-          payload: username
+          payload: response.data.UserId
         });
         // Redirect to the home route
         browserHistory.push('/');

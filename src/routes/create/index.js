@@ -16,6 +16,7 @@ const ROOT_URL = 'http://localhost:3010/api';
 class Create extends Component {
   // Submit the form and attempt to sign the user up
   handleFormSubmit(formProps) {
+    const { createError, userId } = this.props;
     // Merge the options together
     let data = {};
     data.options = [];
@@ -34,7 +35,7 @@ class Create extends Component {
     // Create the poll and options
     axios.post(`${ROOT_URL}/polls/create`, {
       question: data.question,
-      UserId: 1 // temporary
+      UserId: userId
     })
       .then(pollResponse => {
         const id = pollResponse.data.id;
@@ -45,7 +46,7 @@ class Create extends Component {
             PollId: id
           })
             .catch(error => {
-              this.props.createError(error);
+              createError(error);
             });
         });
         // Give a small timeout to the refresh to sync with the database
@@ -55,12 +56,18 @@ class Create extends Component {
         }, 150);
       })
       .catch(error => {
-        this.props.createError(error);
+        createError(error);
       });
   }
 
   render() {
-    const { handleSubmit, pristine, reset, submitting } = this.props;
+    const { authenticated, handleSubmit, pristine, reset, submitting } = this.props;
+
+    if (!authenticated) {
+      return (
+        <h1 className='generic-error'>Please log in or register to create polls!</h1>
+      );
+    }
 
     return (
       <div>
@@ -97,6 +104,8 @@ class Create extends Component {
 
 const mapStateToProps = state => {
   return {
+    authenticated: state.auth.authenticated,
+    userId: state.auth.username,
     errorMessage: state.polls.error
   };
 };

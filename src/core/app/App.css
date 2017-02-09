@@ -6,6 +6,10 @@ Input {
   width: 500px;
 }
 
+.generic-error {
+  padding-top: 100px;
+}
+
 .nav-links {
   display: flex;
 }

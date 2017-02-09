@@ -21,7 +21,7 @@ class Home extends Component {
     if (authenticated) {
       return (
         <Link key='1' to={'/create'}>
-          <Button success>Create Poll<Icon className='header-icon' name='add' /></Button>
+          <Button primary>Create Poll<Icon className='header-icon' name='add' /></Button>
         </Link>
       );
     } else {
