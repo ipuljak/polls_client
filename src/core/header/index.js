@@ -19,6 +19,7 @@ class AppHeader extends Component {
     this.setState({ activeItem: name });
   }
 
+  // Render the appropriate menu items based on authentication status
   renderLinks() {
     const { activeItem } = this.state;
     const { authenticated, signOutUser } = this.props;
@@ -43,11 +44,16 @@ class AppHeader extends Component {
           </Menu.Item>
         </div>
       );
-      // Otherwise show the login and register menu items
+    // Otherwise show the login and register menu items
     } else {
       return (
         <div className='nav-links'>
-          <Modal trigger={<Menu.Item name='Login'>Login<Icon className='header-icon' name='sign in' /></Menu.Item>}>
+          <Modal trigger={
+            <Menu.Item name='Login'>
+              Login
+              <Icon className='header-icon' name='sign in' />
+            </Menu.Item>
+          }>
             <Modal.Header>Login</Modal.Header>
             <Modal.Content>
               <Modal.Description>
@@ -55,7 +61,12 @@ class AppHeader extends Component {
               </Modal.Description>
             </Modal.Content>
           </Modal>
-          <Modal trigger={<Menu.Item name='Register'>Register<Icon className='header-icon' name='add user' /></Menu.Item>}>
+          <Modal trigger={
+              <Menu.Item name='Register'>
+              Register
+              <Icon className='header-icon' name='add user' />
+            </Menu.Item>
+          }>
             <Modal.Header>Register</Modal.Header>
             <Modal.Content>
               <Modal.Description>
@@ -94,6 +105,6 @@ const mapStateToProps = state => {
   return {
     authenticated: state.auth.authenticated
   };
-}
+};
 
 export default connect(mapStateToProps, actions)(AppHeader);

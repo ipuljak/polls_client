@@ -38,7 +38,7 @@ const validate = formProps => {
 }
 
 /**
- *  Container responsible for the Signin route
+ *  Container Login responsible for the Signin route
  */
 class Login extends Component {
   componentWillMount() {
@@ -94,7 +94,7 @@ const mapStateToProps = state => {
   return {
     errorMessage: state.auth.error
   };
-}
+};
 
 // ReduxForm state
 Login = reduxForm({

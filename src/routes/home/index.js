@@ -15,6 +15,7 @@ class Home extends Component {
     this.props.fetchHomePolls();
   }
 
+  // Show a create poll button if the user is authenticated
   renderCreateButton() {
     const { authenticated } = this.props;
 
@@ -24,6 +25,7 @@ class Home extends Component {
           <Button primary>Create Poll<Icon className='header-icon' name='add' /></Button>
         </Link>
       );
+    // Prompt the user to log in or register if they aren't authenticated
     } else {
       return (
         <p>To create a poll, please log in or register!</p>
@@ -46,7 +48,7 @@ class Home extends Component {
           </Link>
         );
       });
-      // Show a loading icon while the polls are being fetched
+      // Show a loading message while the polls are being fetched
     } else {
       return <Segment>Loading</Segment>;
     }

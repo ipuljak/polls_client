@@ -29,6 +29,7 @@ class Poll extends Component {
   render() {
     const { poll } = this.props;
 
+    // Show a loading message if the poll has not been loaded in yet
     if (!poll) {
       return <h1>Loading...</h1>
     }

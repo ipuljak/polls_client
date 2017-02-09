@@ -1,9 +1,9 @@
-.header-icon {
-  padding-left: 5px;
-}
-
 Input {
   width: 500px;
+}
+
+.header-icon {
+  padding-left: 5px;
 }
 
 .generic-error {

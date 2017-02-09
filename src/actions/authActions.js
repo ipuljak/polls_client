@@ -24,7 +24,7 @@ export const authError = error => {
  *  Authenticate and sign in a user given a username and password
  */
 export const signInUser = ({username, password}) => {
-  return (dispatch) => {
+  return dispatch => {
     axios.post(`${ROOT_URL}/auth/login`, { username, password })
       .then(response => {
         // If the request is good update state to indicate that the user is authenticated
@@ -51,8 +51,8 @@ export const signInUser = ({username, password}) => {
  *  Register a user given a unique username and password
  */
 export const signUpUser = ({username, password}) => {
-  return (dispatch) => {
-    axios.post(`${ROOT_URL}/auth/register`, {username, password})
+  return dispatch => {
+    axios.post(`${ROOT_URL}/auth/register`, { username, password })
       .then(response => {
         // If the request is good update state to indicate that the user is authenticated
         dispatch({
@@ -80,6 +80,8 @@ export const signUpUser = ({username, password}) => {
 export const signOutUser = () => {
   // Remove the token from local storage
   localStorage.removeItem('token');
+  // Redirect to the home route
+  browserHistory.push('/');
   return {
     type: UNAUTH_USER
   };

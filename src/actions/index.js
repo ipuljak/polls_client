@@ -45,7 +45,6 @@ export const fetchSinglePoll = id => {
   return dispatch => {
     axios.get(`${ROOT_URL}/polls/${id}/read`)
       .then(response => {
-        console.log('response', response);
         dispatch({
           type: FETCH_SINGLE_POLL,
           payload: response.data

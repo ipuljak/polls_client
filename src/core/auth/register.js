@@ -46,7 +46,7 @@ const validate = formProps => {
 }
 
 /**
- *  Container responsible for the Signout route
+ *  Container Register responsible for the Signout route
  */
 class Register extends Component {
   componentWillMount() {

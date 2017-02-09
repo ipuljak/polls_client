@@ -11,7 +11,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header/>
+        <Header />
         <Container text className='ui center aligned'>
           {this.props.children}
         </Container>
