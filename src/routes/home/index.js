@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import { Container, Header, Segment } from 'semantic-ui-react';
+import { Header, Segment } from 'semantic-ui-react';
 
 import * as actions from '../../actions';
 
@@ -38,13 +38,13 @@ class Home extends Component {
 
   render() {
     return (
-      <Container text className='ui center aligned'>
+      <div>
         <Header as='h2'>Polling Application</Header>
         <p>Recent Polls:</p>
         <Segment.Group>
           {this.renderPolls()}
         </Segment.Group>
-      </Container>
+      </div>
     );
   }
 }

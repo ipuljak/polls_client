@@ -90,7 +90,9 @@ class Login extends Component {
 }
 
 const mapStateToProps = state => {
-  return { errorMessage: state.auth.error };
+  return {
+    errorMessage: state.auth.error
+  };
 }
 
 // ReduxForm state

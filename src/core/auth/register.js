@@ -58,7 +58,7 @@ class Register extends Component {
     this.props.signUpUser(formProps);
   }
 
-  // Submit the form and attempt to sign in the user
+  // Render an alert if there's a problem
   renderAlert() {
     if (this.props.errorMessage) {
       return (
@@ -104,8 +104,10 @@ class Register extends Component {
 }
 
 const mapStateToProps = state => {
-  return { errorMessage: state.auth.error };
-}
+  return {
+    errorMessage: state.auth.error
+  };
+};
 
 // ReduxForm state
 Register = reduxForm({

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Container, Header } from 'semantic-ui-react';
+import { Header } from 'semantic-ui-react';
 
 import * as actions from '../../actions';
 import Chart from './chart';
@@ -34,7 +34,7 @@ class Poll extends Component {
     }
 
     return (
-      <Container text className='ui center aligned'>
+      <div>
         <Header as='h1'>{poll.question}</Header>
         <Header as='h3'>Created by: {poll.createdBy}</Header>
         <Chart data={poll.options} />
@@ -42,7 +42,7 @@ class Poll extends Component {
           data={poll.options}
           fetch={this.props.fetchSinglePoll}
           pollId={this.props.id} />
-      </Container>
+      </div>
     );
   }
 }

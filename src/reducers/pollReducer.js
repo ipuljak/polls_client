@@ -1,7 +1,8 @@
 import {
   FETCH_ERROR,
   FETCH_POLLS,
-  FETCH_SINGLE_POLL
+  FETCH_SINGLE_POLL,
+  CREATE_ERROR
 } from '../actions/types';
 
 /**
@@ -18,6 +19,9 @@ export default (state = {}, action) => {
     // Save a single poll to be viewed in the state
     case FETCH_SINGLE_POLL:
       return {...state, poll: action.payload};
+    // If there is an error with creating a poll, set an error message
+    case CREATE_ERROR:
+      return {...state, error: action.payload };
     default:
       return state;
   }

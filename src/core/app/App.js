@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Container } from 'semantic-ui-react';
 
 import Header from '../header';
 import './App.css';
@@ -11,7 +12,9 @@ class App extends Component {
     return (
       <div className="App">
         <Header/>
-        {this.props.children}
+        <Container text className='ui center aligned'>
+          {this.props.children}
+        </Container>
       </div>
     );
   }

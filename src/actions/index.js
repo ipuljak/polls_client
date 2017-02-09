@@ -4,7 +4,8 @@ import axios from 'axios';
 import {
   FETCH_ERROR,
   FETCH_POLLS,
-  FETCH_SINGLE_POLL
+  FETCH_SINGLE_POLL,
+  CREATE_ERROR
 } from './types';
 
 const ROOT_URL = 'http://localhost:3010/api';
@@ -52,5 +53,15 @@ export const fetchSinglePoll = id => {
       }).catch(error => {
         dispatch(fetchError(error));
       });
+  };
+};
+
+/**
+ *  Set the state to CREATE_ERROR if there was a problem creating the poll
+ */
+export const createError = error => {
+  return {
+    type: CREATE_ERROR,
+    payload: error
   };
 };
