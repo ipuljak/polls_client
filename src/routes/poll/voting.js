@@ -27,7 +27,12 @@ class Voting extends Component {
     if (this.state.value && this.state.value !== '---') {
       // Submit the vote to the server and refresh the poll
       axios.get(`http://localhost:3010/api/options/${this.state.value}/vote`)
-        .then(this.props.fetch(this.props.pollId))
+        // If the vote is successful, refresh the chart to update the vote
+        .then(response => {
+          if (response.data.success) {
+            this.props.fetch(this.props.pollId);
+          }
+        })
         .catch(error => {
           console.log(error);
         });

@@ -14,6 +14,7 @@ import { saveState } from './middleware/localStorage';
 
 // Main index components
 import App from './core/app';
+import Create from './routes/create';
 import Home from './routes/home';
 import Poll from './routes/poll';
 import Secret from './routes/secret';
@@ -45,6 +46,7 @@ ReactDOM.render(
     <Router onUpdate={() => window.scrollTo(0, 0)} history={browserHistory}>
       <Route path='/' component={App}>
         <IndexRoute component={Home} />
+        <Route name='create' path='/create' component={Create} />
         <Route name='home' path='/home' component={Home} />
         <Route name='poll' path='/poll/:id' component={Poll} />
         <Route name='secret' path='/secret' component={Secret} />

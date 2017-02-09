@@ -6,6 +6,9 @@ import * as actions from '../../actions';
 import Chart from './chart';
 import Voting from './voting';
 
+// REFRESH_TIME = time in milliseconds to refresh a poll
+let REFRESH_TIME = null;
+
 /**
  *  Poll class container
  *    -> Displays the entire individual poll's page
@@ -15,10 +18,12 @@ class Poll extends Component {
   componentWillMount() {
     this.props.fetchSinglePoll(this.props.id);
 
-    // *** Set an interval here to dynamically refresh vote totals ***
-    // setInterval(() => {
-    //   this.props.fetchSinglePoll(this.props.id);
-    // }, 5000)
+    // Dynamically refresh vote totals ***
+    if (REFRESH_TIME) {
+      setInterval(() => {
+        this.props.fetchSinglePoll(this.props.id);
+      }, REFRESH_TIME)
+    }
   }
 
   render() {
