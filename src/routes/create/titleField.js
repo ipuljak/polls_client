@@ -1,13 +1,12 @@
 import React from 'react';
-import { Input, Label } from 'semantic-ui-react';
+import { Divider, Input, Label } from 'semantic-ui-react';
 
 const titleField = ({ input, label, type, meta: { touched, error } }) => (
   <div>
-    <label>{label}</label>
-    <div>
-      <Input {...input} size='large' type={type} placeholder={label} />
-      {touched && error && <Label basic color='red' pointing='left'>{error}</Label>}
-    </div>
+    <h2>{label}</h2>
+    <Input {...input} size='large' type={type} placeholder='Enter a title for your poll...' />
+    {touched && error && <Label basic color='red' pointing='left'>{error}</Label>}
+    <Divider />
   </div>
 );
 

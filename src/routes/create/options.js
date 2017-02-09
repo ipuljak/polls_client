@@ -1,6 +1,6 @@
 import React from 'react';
 import { Field } from 'redux-form';
-import { List } from 'semantic-ui-react';
+import { Button, Divider, List } from 'semantic-ui-react';
 
 import optionField from './optionField';
 
@@ -8,20 +8,21 @@ const Options = ({ fields, meta: { touched, error } }) => (
   <List>
     {fields.map((option, index) =>
       <List.Item key={index}>
-        <button
-          type="button"
-          title="Remove Option"
-          onClick={() => fields.remove(index)}>Remove Option</button>
-        <h4>Option #{index + 1}</h4>
         <Field
           name={`${option}.title`}
-          type="text"
-          component={optionField}
-          label="Option" />
+          label={`Option #${index + 1}`}
+          type='text'
+          component={optionField} />
+          <Button 
+            basic 
+            color='red'
+            title='Remove Option'
+            onClick={() => fields.remove(index)}>X</Button>
       </List.Item>
     )}
     <List.Item>
-      <button type="button" onClick={() => fields.push({})}>Add Option</button>
+      <Divider />
+      <Button type="button" onClick={() => fields.push({})}>Add Option</Button>
       {touched && error && <span>{error}</span>}
     </List.Item>
   </List>

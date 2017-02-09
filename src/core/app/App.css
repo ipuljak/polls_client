@@ -1,5 +1,9 @@
-label {
-  display: block;
+Input {
+  width: 500px;
+}
+
+.inline {
+  display: flex;
 }
 
 .nav-links {
