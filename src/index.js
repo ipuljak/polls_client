@@ -43,10 +43,9 @@ store.subscribe(throttle(() => {
 ReactDOM.render(
   <Provider store={store}>
     <Router onUpdate={() => window.scrollTo(0, 0)} history={browserHistory}>
-      <Route path='/polls' component={App}>
+      <Route path='/' component={App}>
         <IndexRoute component={Home} />
         <Route name='create' path='/create' component={Create} />
-        <Route name='home' path='/home' component={Home} />
         <Route name='poll' path='/poll/:id' component={Poll} />
       </Route>
     </Router>

@@ -8,7 +8,8 @@ import {
   AUTH_ERROR
 } from './types';
 
-const ROOT_URL = 'http://localhost:3010/api';
+//const ROOT_URL = 'http://localhost:3010/api';
+const ROOT_URL = 'https://puljak.ca/polls/api';
 
 /**
  *  Set the state to AUTH_ERROR to indicate an error occured during an authentication call

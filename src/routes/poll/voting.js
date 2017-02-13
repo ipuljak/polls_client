@@ -26,7 +26,8 @@ class Voting extends Component {
     // Make sure an option has been chosen and isn't the placeholder
     if (this.state.value && this.state.value !== '---') {
       // Submit the vote to the server and refresh the poll
-      axios.get(`http://localhost:3010/api/options/${this.state.value}/vote`)
+      //axios.get(`http://localhost:3010/api/options/${this.state.value}/vote`)
+      axios.get(`https://puljak.ca/polls/api/options/${this.state.value}/vote`)
         // If the vote is successful, refresh the chart to update the vote
         .then(response => {
           if (response.data.success) {
