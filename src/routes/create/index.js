@@ -11,10 +11,13 @@ import Options from './options';
 import validate from './validate';
 import * as actions from '../../actions';
 
-//const ROOT_URL = 'http://localhost:3010/api';
-const ROOT_URL = 'https://puljak.ca/polls/api';
+const ROOT_URL = 'http://localhost:3010/api';
+//const ROOT_URL = 'https://puljak.ca/polls/api';
 
-
+/**
+ *  Create class component
+ *    -> Allows the creation of a new poll by an authenticated user
+ */
 class Create extends Component {
   // Submit the form and attempt to sign the user up
   handleFormSubmit(formProps) {
